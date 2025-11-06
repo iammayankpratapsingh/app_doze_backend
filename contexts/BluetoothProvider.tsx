@@ -7,11 +7,12 @@ interface BluetoothContextType {
   scannedDevices: Device[];
   connectedDevice: Device | null;
   connectionStatus: 'disconnected' | 'connecting' | 'connected' | 'disconnecting';
+  isScanning: boolean;
   requestPermissions(): Promise<boolean>;
   startScan(): void;
   stopScan(): void;
   connectToDevice(device: Device): Promise<void>;
-  disconnectDevice(): void;
+  disconnectDevice(): Promise<void>;
 }
 
 // Create the context with a default undefined value

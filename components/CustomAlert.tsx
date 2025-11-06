@@ -3,15 +3,31 @@ import { Dimensions, Modal, StyleSheet, Text, TouchableOpacity, View } from 'rea
 
 const { width } = Dimensions.get('window');
 
+interface AlertButton {
+  text: string;
+  onPress: () => void;
+  style?: 'default' | 'primary';
+}
+
 interface CustomAlertProps {
   visible: boolean;
   title: string;
   message: string;
-  onClose: () => void;
+  buttons?: AlertButton[];
+  onClose?: () => void;
 }
 
-const CustomAlert: React.FC<CustomAlertProps> = ({ visible, title, message, onClose }) => {
+const CustomAlert: React.FC<CustomAlertProps> = ({ visible, title, message, buttons, onClose }) => {
   if (!visible) return null;
+
+  // Default single OK button if no buttons provided
+  const alertButtons = buttons || [
+    {
+      text: 'OK',
+      onPress: onClose || (() => {}),
+      style: 'primary' as const
+    }
+  ];
 
   return (
     <Modal
@@ -29,9 +45,32 @@ const CustomAlert: React.FC<CustomAlertProps> = ({ visible, title, message, onCl
           <View style={styles.modalContainer}>
             <Text style={styles.modalTitle}>{title}</Text>
             <Text style={styles.modalMessage}>{message}</Text>
-            <TouchableOpacity style={styles.modalButton} onPress={onClose}>
-              <Text style={styles.modalButtonText}>OK</Text>
-            </TouchableOpacity>
+            
+            {/* Buttons container */}
+            <View style={alertButtons.length > 1 ? styles.buttonsRow : styles.buttonsSingle}>
+              {alertButtons.map((button, index) => {
+                const isPrimary = button.style === 'primary' || alertButtons.length === 1;
+                return (
+                  <TouchableOpacity
+                    key={index}
+                    style={[
+                      styles.modalButton,
+                      alertButtons.length > 1 && styles.modalButtonHalf,
+                      isPrimary ? styles.modalButtonPrimary : styles.modalButtonSecondary,
+                      index > 0 && alertButtons.length > 1 && { marginLeft: 10 }
+                    ]}
+                    onPress={button.onPress}
+                  >
+                    <Text style={[
+                      styles.modalButtonText,
+                      isPrimary ? styles.modalButtonTextPrimary : styles.modalButtonTextSecondary
+                    ]}>
+                      {button.text}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
           </View>
         </View>
       </BlurView>
@@ -76,7 +115,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 20,
     elevation: 10,
-    // Ensure the modal itself is not blurred
     zIndex: 1000,
   },
   modalTitle: {
@@ -93,9 +131,15 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     lineHeight: 22,
   },
-  modalButton: {
+  buttonsSingle: {
     width: '100%',
-    backgroundColor: '#FFFFFF',
+  },
+  buttonsRow: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  modalButton: {
     paddingVertical: 15,
     borderRadius: 15,
     alignItems: 'center',
@@ -108,10 +152,26 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  modalButtonHalf: {
+    flex: 1,
+  },
+  modalButtonPrimary: {
+    backgroundColor: '#FFFFFF',
+  },
+  modalButtonSecondary: {
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+  },
   modalButtonText: {
-    color: '#1D244D',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  modalButtonTextPrimary: {
+    color: '#1D244D',
+  },
+  modalButtonTextSecondary: {
+    color: '#FFFFFF',
   },
 });
 

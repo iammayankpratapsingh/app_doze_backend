@@ -44,23 +44,60 @@ function coerceToArray(raw: unknown): any[] {
 
 export async function scanWifi(): Promise<ScannedNetwork[]> {
   if (Platform.OS === 'ios') return [];
+  
+  console.log('[WiFi] Starting WiFi scan...');
   await ensureWifiScanPermissions();
+  console.log('[WiFi] Permissions checked successfully');
 
   let raw: unknown;
+  let isThrottled = false;
+  
   try {
+    console.log('[WiFi] Calling reScanAndLoadWifiList...');
     raw = await WifiManager.reScanAndLoadWifiList();
+    console.log('[WiFi] reScanAndLoadWifiList returned, type:', typeof raw);
+    
+    // Check if Android returned throttling error message
+    if (typeof raw === 'string' && raw.includes('only allowed to scan')) {
+      console.warn('[WiFi] ⚠️ Android scan throttling detected, trying cached results...');
+      isThrottled = true;
+      
+      // Try to get cached results with loadWifiList
+      try {
+        // @ts-ignore optional on some versions
+        raw = await WifiManager.loadWifiList?.();
+        console.log('[WiFi] loadWifiList (cached) returned, type:', typeof raw);
+      } catch (cacheError) {
+        console.error('[WiFi] Failed to get cached list:', cacheError);
+        throw new Error('Android WiFi scan throttled. Please wait 2 minutes and try again.');
+      }
+    }
   } catch (e) {
     console.warn('[WiFi] reScanAndLoadWifiList failed, trying loadWifiList():', e);
     try {
       // @ts-ignore optional on some versions
       raw = await WifiManager.loadWifiList?.();
+      console.log('[WiFi] loadWifiList returned, type:', typeof raw);
     } catch (e2) {
       console.error('[WiFi] loadWifiList failed:', e2);
-      return [];
+      throw new Error('Failed to scan WiFi networks. Please try again.');
     }
   }
 
+  console.log('[WiFi] Raw scan result:', JSON.stringify(raw).substring(0, 500));
+  
+  // Check again if result is still a throttle message
+  if (typeof raw === 'string' && raw.includes('only allowed to scan')) {
+    throw new Error('WiFi scan throttled by Android (4 scans per 2 minutes limit). Please wait and try again.');
+  }
+  
   const arr = coerceToArray(raw);
+  console.log('[WiFi] Coerced to array, length:', arr.length);
+  
+  if (arr.length > 0) {
+    console.log('[WiFi] First network sample:', JSON.stringify(arr[0]));
+  }
+  
   try {
     const mapped = arr
       .map((n: any) => ({
@@ -70,6 +107,16 @@ export async function scanWifi(): Promise<ScannedNetwork[]> {
         level: typeof n?.level === 'number' ? n.level : undefined,
       }))
       .filter(n => !!n.ssid);
+    
+    console.log('[WiFi] Mapped networks:', mapped.length);
+    if (mapped.length > 0) {
+      console.log('[WiFi] Sample mapped network:', JSON.stringify(mapped[0]));
+    }
+    
+    if (isThrottled && mapped.length > 0) {
+      console.log('[WiFi] ✅ Successfully retrieved', mapped.length, 'networks from cache');
+    }
+    
     return Array.isArray(mapped) ? mapped : [];
   } catch (e) {
     console.error('[WiFi] map/filter failed:', e, 'raw:', raw);

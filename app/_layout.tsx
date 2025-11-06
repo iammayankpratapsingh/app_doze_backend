@@ -4,6 +4,7 @@ import { SignupProvider } from "@/contexts/SignupContext";
 import { Stack } from "expo-router";
 import { BluetoothProvider } from '../contexts/BluetoothProvider';
 
+
 export default function RootLayout() {
   return (
     <AuthProvider>

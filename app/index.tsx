@@ -125,13 +125,13 @@ export default function Index() {
           
         </BlurView>
 
-        {/* <TouchableOpacity style={styles.testBluetoothContainer} onPress={() => router.push('/(bluetooth)/BluetoothScan')}>
+        <TouchableOpacity style={styles.testBluetoothContainer} onPress={() => router.push('/(bluetooth)/ScanScreen')}>
             <Text style={styles.tagline}>Test Bluetooth</Text>
-        </TouchableOpacity> */}
-
-        <TouchableOpacity style={styles.testBluetoothContainer} onPress={() => router.push('/(wifi)/provision')}>
-            <Text style={styles.tagline}>Test Provisioning</Text>
         </TouchableOpacity>
+
+        {/* <TouchableOpacity style={styles.testBluetoothContainer} onPress={() => router.push('/(wifi)/provision')}>
+            <Text style={styles.tagline}>Test Provisioning</Text>
+        </TouchableOpacity> */}
 
       </Animated.View>
     </View>
