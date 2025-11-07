@@ -3,8 +3,10 @@ import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Animated, Dimensions, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useAuth } from '@/contexts/AuthContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const { width } = Dimensions.get('window');
@@ -14,6 +16,11 @@ WebBrowser.maybeCompleteAuthSession();
 export default function Index() {
 
   const router = useRouter();
+  const { auth } = useAuth();
+  const [onboardingChecked, setOnboardingChecked] = useState<boolean>(false);
+  const [onboardingSeen, setOnboardingSeen] = useState<boolean>(false);
+  const [setupChecked, setSetupChecked] = useState<boolean>(false);
+  const [setupSeen, setSetupSeen] = useState<boolean>(false);
 
   
   // Animations
@@ -46,6 +53,61 @@ export default function Index() {
         }),
       ])
     ).start();
+  }, []);
+
+  // Redirect after checks
+  useEffect(() => {
+    (async () => {
+      if (!onboardingChecked || !setupChecked) return;
+      if (!auth.isLoading) {
+        if (!onboardingSeen) {
+          router.replace('/onboarding');
+        } else if (auth.isLoggedIn) {
+          if (!setupSeen) {
+            try { await AsyncStorage.setItem('setup_seen_v1', '1'); } catch {}
+            router.replace('/setup');
+          } else {
+            router.replace('/(tabs)/home');
+          }
+        }
+      }
+    })();
+  }, [auth.isLoading, auth.isLoggedIn, onboardingChecked, onboardingSeen, setupChecked, setupSeen]);
+
+  // Check onboarding flag once
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const v = await AsyncStorage.getItem('onboarding_seen_v1');
+        if (!mounted) return;
+        setOnboardingSeen(!!v);
+        setOnboardingChecked(true);
+      } catch {
+        if (!mounted) return;
+        setOnboardingSeen(false);
+        setOnboardingChecked(true);
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
+
+  // Check setup flag once
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const v = await AsyncStorage.getItem('setup_seen_v1');
+        if (!mounted) return;
+        setSetupSeen(!!v);
+        setSetupChecked(true);
+      } catch {
+        if (!mounted) return;
+        setSetupSeen(false);
+        setSetupChecked(true);
+      }
+    })();
+    return () => { mounted = false; };
   }, []);
 
   // Handlers

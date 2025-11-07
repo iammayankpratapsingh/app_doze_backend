@@ -1,0 +1,37 @@
+<svg width="360" height="280" viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1D244D"/>
+      <stop offset="60%" stop-color="#02041A"/>
+      <stop offset="100%" stop-color="#1A1D3E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="55%" r="55%">
+      <stop offset="0%" stop-color="#C7B9FF" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#C7B9FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="360" height="280" fill="url(#bgGrad)"/>
+
+  <!-- Moon and subtle stars -->
+  <circle cx="300" cy="46" r="16" fill="#C7B9FF" opacity="0.85"/>
+  <circle cx="40" cy="40" r="2" fill="#C7B9FF" opacity="0.35"/>
+  <circle cx="80" cy="26" r="1.6" fill="#C7B9FF" opacity="0.28"/>
+  <circle cx="120" cy="50" r="1.8" fill="#C7B9FF" opacity="0.32"/>
+  <circle cx="210" cy="30" r="1.4" fill="#C7B9FF" opacity="0.28"/>
+
+  <!-- Window panel hint -->
+  <rect x="250" y="22" width="70" height="54" rx="8" fill="#0F1230" opacity="0.35" stroke="#C7B9FF" stroke-opacity="0.15"/>
+
+  <!-- Bed with glow -->
+  <ellipse cx="180" cy="200" rx="120" ry="60" fill="url(#glow)"/>
+  <rect x="75" y="150" width="210" height="80" rx="18" fill="#0F1330" stroke="#C7B9FF" stroke-opacity="0.18"/>
+  <rect x="95" y="160" width="70" height="24" rx="8" fill="#151A44"/>
+  <rect x="175" y="160" width="70" height="24" rx="8" fill="#151A44"/>
+  <rect x="95" y="190" width="150" height="18" rx="9" fill="#1B204F" opacity="0.8"/>
+
+  <!-- Tagline lines (placeholder) -->
+  <rect x="110" y="86" width="140" height="6" rx="3" fill="#C7B9FF" opacity="0.45"/>
+  <rect x="125" y="98" width="110" height="5" rx="2.5" fill="#C7B9FF" opacity="0.24"/>
+</svg>
+
