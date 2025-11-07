@@ -1,0 +1,28 @@
+<svg width="360" height="280" viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1D244D"/>
+      <stop offset="60%" stop-color="#02041A"/>
+      <stop offset="100%" stop-color="#1A1D3E"/>
+    </linearGradient>
+    <radialGradient id="zoneGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#C7B9FF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#C7B9FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="360" height="280" fill="url(#bgGrad3)"/>
+
+  <!-- Bed top-down -->
+  <rect x="60" y="70" width="240" height="140" rx="20" fill="#0F1330" stroke="#C7B9FF" stroke-opacity="0.18"/>
+  <rect x="74" y="86" width="96" height="44" rx="10" fill="#151A44"/>
+  <rect x="190" y="86" width="96" height="44" rx="10" fill="#151A44"/>
+  
+  <!-- Placement zone -->
+  <ellipse cx="180" cy="150" rx="78" ry="38" fill="url(#zoneGlow)"/>
+  <rect x="126" y="132" width="108" height="36" rx="12" fill="none" stroke="#C7B9FF" stroke-opacity="0.55" stroke-dasharray="6 6"/>
+
+  <!-- Caption bars -->
+  <rect x="110" y="222" width="140" height="6" rx="3" fill="#C7B9FF" opacity="0.38"/>
+  <rect x="125" y="234" width="110" height="6" rx="3" fill="#C7B9FF" opacity="0.24"/>
+</svg>
+

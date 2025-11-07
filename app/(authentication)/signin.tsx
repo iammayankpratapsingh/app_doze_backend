@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
+import { useAuth } from '@/contexts/AuthContext';
 import { useState } from 'react';
 import {
   ActivityIndicator,
@@ -23,6 +24,7 @@ const { width } = Dimensions.get('window');
 
 export default function SignInScreen() {
   const router = useRouter();
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(true);
@@ -104,6 +106,9 @@ export default function SignInScreen() {
           remember_me: rememberMe ? 'true' : 'false',
         });
 
+        // Update AuthContext and trigger profile fetch
+        await login(token, { id: userId, email: userEmail, name: userName });
+
         router.replace('/(authentication)/signinResults?ok=1');
       } else {
         const msg = result?.message || "Invalid credentials or server error.";
@@ -120,7 +125,7 @@ export default function SignInScreen() {
   const handleCloseModal = () => {
     setModalVisible(false);
     if (modalInfo.isSuccess) {
-      router.replace('/(tabs)/home'); // Adjust this to your main app route
+      router.replace('/setup'); // Adjust this to your main app route
     }
   };
 

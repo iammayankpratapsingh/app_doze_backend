@@ -1,0 +1,29 @@
+<svg width="360" height="280" viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1D244D"/>
+      <stop offset="60%" stop-color="#02041A"/>
+      <stop offset="100%" stop-color="#1A1D3E"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="280" fill="url(#bgGrad2)"/>
+
+  <!-- Phone -->
+  <rect x="70" y="50" width="120" height="200" rx="22" fill="#0F1330" stroke="#C7B9FF" stroke-opacity="0.2"/>
+  <rect x="84" y="82" width="92" height="120" rx="12" fill="#151A44"/>
+  <circle cx="130" cy="70" r="4" fill="#1B204F"/>
+
+  <!-- Device -->
+  <rect x="220" y="122" width="72" height="44" rx="12" fill="#0F1330" stroke="#C7B9FF" stroke-opacity="0.2"/>
+  <circle cx="256" cy="144" r="6" fill="#C7B9FF" opacity="0.9"/>
+
+  <!-- Pairing waves -->
+  <path d="M180 140c20 0 30 10 30 10" stroke="#C7B9FF" stroke-opacity="0.55" stroke-width="2" fill="none"/>
+  <path d="M180 130c30 0 44 18 44 18" stroke="#C7B9FF" stroke-opacity="0.35" stroke-width="2" fill="none"/>
+  <path d="M180 120c38 0 56 26 56 26" stroke="#C7B9FF" stroke-opacity="0.22" stroke-width="2" fill="none"/>
+
+  <!-- Label bars -->
+  <rect x="88" y="210" width="84" height="8" rx="4" fill="#C7B9FF" opacity="0.35"/>
+  <rect x="88" y="196" width="60" height="6" rx="3" fill="#C7B9FF" opacity="0.2"/>
+</svg>
+

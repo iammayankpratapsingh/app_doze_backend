@@ -47,7 +47,7 @@ export default function SigninResult() {
             <TouchableOpacity
               style={styles.primaryBtn}
               onPress={() => {router.dismissAll;
-                router.replace('/(tabs)/home')}}
+                router.replace('/setup')}}
             >
               <Text style={styles.primaryText}>Continue</Text>
             </TouchableOpacity>

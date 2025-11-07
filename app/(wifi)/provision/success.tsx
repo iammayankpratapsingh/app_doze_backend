@@ -28,7 +28,7 @@ export default function Step3SuccessScreen() {
           In a future update, this screen will confirm mapping from the server.
         </Text>
 
-        <TouchableOpacity style={styles.primaryBtn} onPress={() => router.replace('/(tabs)/home')}>
+        <TouchableOpacity style={styles.primaryBtn} onPress={() => router.replace('/setup')}>
           <Text style={styles.primaryText}>Done</Text>
         </TouchableOpacity>
       </View>

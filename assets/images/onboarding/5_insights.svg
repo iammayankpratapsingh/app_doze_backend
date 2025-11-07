@@ -1,0 +1,31 @@
+<svg width="360" height="280" viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1D244D"/>
+      <stop offset="60%" stop-color="#02041A"/>
+      <stop offset="100%" stop-color="#1A1D3E"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="280" fill="url(#bgGrad5)"/>
+
+  <!-- Cards -->
+  <rect x="60" y="60" width="110" height="70" rx="12" fill="#0F1330" stroke="#C7B9FF" stroke-opacity="0.18"/>
+  <rect x="190" y="60" width="110" height="70" rx="12" fill="#0F1330" stroke="#C7B9FF" stroke-opacity="0.18"/>
+  <rect x="60" y="140" width="240" height="70" rx="14" fill="#0F1330" stroke="#C7B9FF" stroke-opacity="0.18"/>
+
+  <!-- Mini chart lines -->
+  <path d="M75 108c10-12 20-6 30-16 10-10 20 6 30-2" stroke="#C7B9FF" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M205 108c8-8 18-10 28-4 10 6 20-8 30 0" stroke="#C7B9FF" stroke-width="2" fill="none" opacity="0.35"/>
+
+  <!-- Big chart -->
+  <path d="M80 188c18-16 36 0 54-12 18-12 36 18 54 6 18-12 36-24 54-10" stroke="#C7B9FF" stroke-width="2" fill="none" opacity="0.65"/>
+
+  <!-- Lock icon -->
+  <rect x="270" y="56" width="26" height="20" rx="6" fill="#C7B9FF" opacity="0.75"/>
+  <rect x="278" y="46" width="10" height="10" rx="5" fill="#C7B9FF" opacity="0.55"/>
+
+  <!-- Caption bars -->
+  <rect x="110" y="226" width="140" height="6" rx="3" fill="#C7B9FF" opacity="0.38"/>
+  <rect x="135" y="238" width="90" height="6" rx="3" fill="#C7B9FF" opacity="0.24"/>
+</svg>
+
