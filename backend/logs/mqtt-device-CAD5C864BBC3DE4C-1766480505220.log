@@ -1,0 +1,25 @@
+[2025-12-23T09:01:45.221Z] 🔌 Connecting to MQTT broker: mqtt://172.105.98.123:1883...
+[2025-12-23T09:01:45.595Z] ❌ MQTT Error: connect ECONNREFUSED 172.105.98.123:1883
+[2025-12-23T09:01:45.597Z] ⚠️  MQTT client is offline
+[2025-12-23T09:01:45.598Z] 🔌 MQTT connection closed
+[2025-12-23T09:01:50.599Z] 🔄 Reconnecting to MQTT broker...
+[2025-12-23T09:01:53.143Z] ❌ MQTT Error: connect ECONNREFUSED 172.105.98.123:1883
+[2025-12-23T09:01:53.144Z] 🔌 MQTT connection closed
+[2025-12-23T09:01:58.145Z] 🔄 Reconnecting to MQTT broker...
+[2025-12-23T09:01:58.573Z] ❌ MQTT Error: connect ECONNREFUSED 172.105.98.123:1883
+[2025-12-23T09:01:58.574Z] 🔌 MQTT connection closed
+[2025-12-23T09:02:03.574Z] 🔄 Reconnecting to MQTT broker...
+[2025-12-23T09:02:05.026Z] ❌ MQTT Error: connect ECONNREFUSED 172.105.98.123:1883
+[2025-12-23T09:02:05.028Z] 🔌 MQTT connection closed
+[2025-12-23T09:02:10.028Z] 🔄 Reconnecting to MQTT broker...
+[2025-12-23T09:02:10.538Z] ❌ MQTT Error: connect ECONNREFUSED 172.105.98.123:1883
+[2025-12-23T09:02:10.539Z] 🔌 MQTT connection closed
+[2025-12-23T09:02:15.541Z] 🔄 Reconnecting to MQTT broker...
+[2025-12-23T09:02:16.171Z] ❌ MQTT Error: connect ECONNREFUSED 172.105.98.123:1883
+[2025-12-23T09:02:16.172Z] 🔌 MQTT connection closed
+[2025-12-23T09:02:18.744Z] 
+[2025-12-23T09:02:18.745Z] ═══════════════════════════════════════════════════════════════
+[2025-12-23T09:02:18.745Z] 🛑 Shutting down MQTT subscriber...
+[2025-12-23T09:02:18.745Z] 📝 Log file saved at: /Users/mayankpratapsingh/Apps/Doze_App_Harshit/backend/logs/mqtt-device-CAD5C864BBC3DE4C-1766480505220.log
+[2025-12-23T09:02:18.745Z] ═══════════════════════════════════════════════════════════════
+[2025-12-23T09:02:18.746Z] 🔚 MQTT client ended

@@ -1,0 +1,16 @@
+[2025-12-22T10:24:51.827Z] auth.login:start {"email":"mayank.p.singh077@gmail.com"}
+[2025-12-22T10:24:51.827Z] auth.login:payload {"email":"mayank.p.singh077@gmail.com","passwordLen":12}
+[2025-12-22T10:24:51.903Z] auth.login:user_lookup {"found":true,"email":"mayank.p.singh077@gmail.com"}
+[2025-12-22T10:24:51.911Z] auth.login:env {"ip":"::1","ua":"PostmanRuntime/7.39.1","os":"Other 0.0.0","browser":"Other 0.0.0 / Other 0.0.0","geo":null}
+[2025-12-22T10:24:52.123Z] auth.login:password_compare {"ok":true,"email":"mayank.p.singh077@gmail.com"}
+[2025-12-22T10:24:52.124Z] auth.login:token_issued {"userId":"693d3112c3dbb57fa59e1ccf"}
+[2025-12-22T10:24:52.207Z] auth.login:success {"userId":"693d3112c3dbb57fa59e1ccf","email":"mayank.p.singh077@gmail.com","ip":"::1","country":null,"city":null}
+[2025-12-22T10:24:52.207Z] auth.login:resp {"status":200,"message":"User Logged in Successfully"}
+[2025-12-23T05:37:37.065Z] auth.login:start {"email":"mayank.p.singh077@gmail.com"}
+[2025-12-23T05:37:37.065Z] auth.login:payload {"email":"mayank.p.singh077@gmail.com","passwordLen":12}
+[2025-12-23T05:37:37.135Z] auth.login:user_lookup {"found":true,"email":"mayank.p.singh077@gmail.com"}
+[2025-12-23T05:37:37.142Z] auth.login:env {"ip":"::ffff:192.168.1.102","ua":"PostmanRuntime/7.39.1","os":"Other 0.0.0","browser":"Other 0.0.0 / Other 0.0.0","geo":null}
+[2025-12-23T05:37:37.347Z] auth.login:password_compare {"ok":true,"email":"mayank.p.singh077@gmail.com"}
+[2025-12-23T05:37:37.347Z] auth.login:token_issued {"userId":"693d3112c3dbb57fa59e1ccf"}
+[2025-12-23T05:37:37.406Z] auth.login:success {"userId":"693d3112c3dbb57fa59e1ccf","email":"mayank.p.singh077@gmail.com","ip":"::ffff:192.168.1.102","country":null,"city":null}
+[2025-12-23T05:37:37.406Z] auth.login:resp {"status":200,"message":"User Logged in Successfully"}
